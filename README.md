@@ -34,7 +34,7 @@ This is the repository for **Mobile System Control** lecture
     cd ..
     rm -rf build devel
     mkdir build devel install logs
-    catkin init
+    catkin **init**
     catkin build
     ```
 2. Build Packages
@@ -47,43 +47,43 @@ This is the repository for **Mobile System Control** lecture
     ```
 * Build packages
     ```sh
-    catkin build
+    colcon build
     ```
 ## Launch Control Examples
 1. Launch **carla_ros_bridge**
     ```sh
-    roslaunch carla_ros_bridge carla_ros_bridge.launch
+    ros2 launch carla_ros_bridge carla_ros_bridge.launch.py
     ```
 2. Launch **mobile_system_control**
     ```sh
-    roslaunch mobile_system_control mobile_system.launch
+    ros2 launch mobile_system_control mobile_system.launch.py
     ```
     ```sh
-    roslaunch mobile_system_control_vis mobile_system_control_vis.launch
+    ros2 launch mobile_system_control_vis mobile_system_control_vis.launch.py
     ```
 3. Spawn vehicle and control window
     ```sh
-    roslaunch carla_spawn_objects carla_spawn_objects.launch objects_file_name:=ego
+    ros2 launch carla_spawn_objects carla_spawn_objects.launch.py object_name:=ego
     ```
     ```
-    roslaunch carla_manual_control carla_manual_control.launch role_name:=ego_vehicle
+    ros2 launch carla_manual_control carla_manual_control.launch.py role_name:=ego_vehicle
     ```
 4. Launch control examples
     * PID controller
         ```
-        roslaunch PID_control_ex PID.launch
+        ros2 launch pid_control_ex pid_control_ex.launch.py
         ```
     * Pure Pursuit controller
         ```
-        roslaunch PurePursuit_control_ex PurePursuit.launch
+        ros2 launch pure_pursuit_control_ex pure_pursuit_control_ex.launch.py
         ```
     * Kanayama controller
         ```
-        roslaunch Kanayama_control_ex Kanayama.launch
+        ros2 launch kanayama_control_ex kanayama_control_ex.launch.py
         ```
     * MPC controller
         ```
-        roslaunch MPC_control_ex MPC.launch
+        ros2 launch mpc_control_ex mpc_control_ex.launch.py
         ```
 ## Download Link
 1. [RoadRunner Map Files](https://1drv.ms/f/c/c0946eca17387fd6/Ekn4u42uQWhFsWUfN6Ae_8MBeV0yV4mr3dVWXNLXa3r6tQ?e=zc3rHF)
