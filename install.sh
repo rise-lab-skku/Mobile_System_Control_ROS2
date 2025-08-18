@@ -47,6 +47,7 @@ cd ../../
 # Clean up the temporary build directory
 rm -rf $BUILD_DIR
 
+sudo apt-get install -y "ros-$ROS_DISTRO-derived-object-msgs"
 
 export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 export LC_NUMERIC="en_US.UTF-8"

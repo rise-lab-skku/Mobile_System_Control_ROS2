@@ -6,7 +6,11 @@ This repository is for the ROS 2 version of the **Mobile System Control** lectur
 
 ## Prerequisites
 
-This repository is tested on **Ubuntu 20.04 with ROS 2 Foxy**. Before starting the build, please ensure the following are prepared.
+This repository has been tested on **Ubuntu 20.04 with ROS 2 Foxy**.  
+Before building, please ensure your environment meets the prerequisites listed below.  
+
+> Note: It was also successfully tested on **Ubuntu 22.04 with ROS 2 Humble** as of 2025-08-18.
+
 
 1.  **ROS 2 Foxy Installation**
 * Installation guide: [ROS 2 Foxy Official Installation Docs](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html)
@@ -54,7 +58,7 @@ This repository is tested on **Ubuntu 20.04 with ROS 2 Foxy**. Before starting t
 
     Run the provided `install.sh` script to install optimization libraries required for controllers like MPC.
     ```sh
-    cd ~/carla_ws_ros2/src
+    cd ~/carla_ws_ros2/src/Mobile_System_Control_ROS2
     sudo ./install.sh
     ```
 

@@ -309,7 +309,7 @@ class HUD(object):
         default_font = 'ubuntumono'
         mono = default_font if default_font in fonts else fonts[0]
         mono = pygame.font.match_font(mono)
-        self._font_mono = pygame.font.Font(mono, 14)
+        self._font_mono = pygame.font.Font(mono, 20)
         self._notifications = FadingText(font, (width, 40), (0, height - 40))
         self.help = HelpText(pygame.font.Font(mono, 24), width, height)
         self._show_info = True
@@ -484,12 +484,12 @@ class HUD(object):
         render the display
         """
         if self._show_info:
-            info_surface = pygame.Surface((220, self.dim[1]))
+            info_surface = pygame.Surface((340, self.dim[1]))
             info_surface.set_alpha(100)
             display.blit(info_surface, (0, 0))
-            v_offset = 4
-            bar_h_offset = 100
-            bar_width = 106
+            v_offset = 6
+            bar_h_offset = 120
+            bar_width = 150
             for item in self._info_text:
                 if v_offset + 18 > self.dim[1]:
                     break
@@ -615,7 +615,7 @@ def main(args=None):
     roscomp.init("manual_control", args=args)
 
     # resolution should be similar to spawned camera with role-name 'view'
-    resolution = {"width": 800, "height": 600}
+    resolution = {"width": 1920, "height": 1080}
 
     pygame.init()
     pygame.font.init()

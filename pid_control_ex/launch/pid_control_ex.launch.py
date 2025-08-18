@@ -16,7 +16,7 @@ def generate_launch_description():
             emulate_tty=True, # ROS 2에서 screen 출력을 보기 위해 필요
             parameters=[
                 {'path': path_to_csv},
-                {'Kp': 1.0},
+                {'Kp': 2.0},
                 {'Ki': 0.5},
                 {'accel': 0.8}
             ]
