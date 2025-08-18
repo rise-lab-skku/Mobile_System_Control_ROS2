@@ -1,7 +1,19 @@
-# Mobile System Control
-This is the repository for **Mobile System Control** lecture
+# Mobile System Control (ROS 2)
 
-   ![mpc](https://github.com/rise-lab-skku/Mobile_System_Control/assets/80592399/8638328b-c6c6-4007-86b4-e025b3875c0c)
+This repository is for the ROS 2 version of the **Mobile System Control** lecture. For the ROS 1 version, please refer to [Mobile_System_Control](https://github.com/rise-lab-skku/Mobile_System_Control).
+
+![MPC Controller Simulation Screen](https://github.com/rise-lab-skku/Mobile_System_Control/assets/80592399/8638328b-c6c6-4007-86b4-e025b3875c0c)
+
+## Prerequisites
+
+This repository is tested on **Ubuntu 20.04 with ROS 2 Foxy**. Before starting the build, please ensure the following are prepared.
+
+1.  **ROS 2 Foxy Installation**
+* Installation guide: [ROS 2 Foxy Official Installation Docs](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html)
+* You must source the ROS 2 environment in every new terminal:
+    ```sh
+    source /opt/ros/foxy/setup.bash
+    ```
 
 ## Launching CARLA
 1. Download CARLA: [Mobile System Control package version of CARLA simulator](https://1drv.ms/u/c/c0946eca17387fd6/EctYFydgbM5JmR690gOO5AcByn2la_gwNoDY4BHIwHm-_A?e=pa897O)
@@ -22,33 +34,47 @@ This is the repository for **Mobile System Control** lecture
     echo "PYTHONPATH=$PYTHONPATH:~/Downloads/CARLA_package/CARLA/PythonAPI/carla/dist/carla-0.9.15-py3.8-linux-x86_64.egg:~/Downloads/CARLA_package/CARLA/PythonAPI/carla/" >> ~/.zshrc
     ```
 
+## Build ROS 2 Packages
 
-## Build Example Packages
-1. Setup **catkin build**
-* Change **catkin_make** workspace to **catkin build**
+###  Create a ROS 2 Workspace
+
+1.  Create a ROS 2 workspace named `your workspace name`.
     ```sh
-    pip3 install pip --upgrade
-    pip3 install -U catkin_tools
-    cd ~/catkin_ws/src
-    rm CMakeLists.txt
-    cd ..
-    rm -rf build devel
-    mkdir build devel install logs
-    catkin **init**
-    catkin build
+    mkdir -p ~/carla_ws_ros2/src
+    cd ~/carla_ws_ros2/src
     ```
-2. Build Packages
-* Install external library for QP solver and CARLA messages
+2. Clone this repository into the `src` folder.
+    ```sh
+    git clone https://github.com/rise-lab-skku/Mobile_System_Control_ROS2
     ```
-    cd ~/catkin_ws/src
-    git clone https://github.com/rise-lab-skku/Mobile_System_Control.git
-    cd Mobile_System_Control
+
+### Install Dependencies
+
+1. **Install External Libraries (e.g., QP Solver)**
+
+    Run the provided `install.sh` script to install optimization libraries required for controllers like MPC.
+    ```sh
+    cd ~/carla_ws_ros2/src
     sudo ./install.sh
     ```
-* Build packages
+2. **Install ROS 2 Package Dependencies**
+  Use `rosdep` to automatically install all ROS 2 dependencies listed in the `package.xml` files.
     ```sh
+    cd ~/carla_ws_ros2
+    rosdep install -i --from-path src --rosdistro foxy -y
+    ```
+
+### Build the Packages
+1. Navigate to the workspace root directory and build all packages using the `colcon build` command.
+    ```sh
+    cd ~/carla_ws_ros2
     colcon build
     ```
+2.  After the build is complete, you must source the setup file in every new terminal to use the packages.
+    ```sh
+    source ~/carla_ws_ros2/install/setup.bash
+    ```
+
 ## Launch Control Examples
 1. Launch **carla_ros_bridge**
     ```sh
@@ -69,22 +95,22 @@ This is the repository for **Mobile System Control** lecture
     ros2 launch carla_manual_control carla_manual_control.launch.py role_name:=ego_vehicle
     ```
 4. Launch control examples
-    * PID controller
-        ```
-        ros2 launch pid_control_ex pid_control_ex.launch.py
-        ```
-    * Pure Pursuit controller
-        ```
-        ros2 launch pure_pursuit_control_ex pure_pursuit_control_ex.launch.py
-        ```
-    * Kanayama controller
-        ```
-        ros2 launch kanayama_control_ex kanayama_control_ex.launch.py
-        ```
-    * MPC controller
-        ```
-        ros2 launch mpc_control_ex mpc_control_ex.launch.py
-        ```
+ * PID controller
+     ```
+     ros2 launch pid_control_ex pid_control_ex.launch.py
+     ```
+ * Pure Pursuit controller
+     ```
+     ros2 launch pure_pursuit_control_ex pure_pursuit_control_ex.launch.py
+     ```
+ * Kanayama controller
+     ```
+     ros2 launch kanayama_control_ex kanayama_control_ex.launch.py
+     ```
+ * MPC controller
+     ```
+     ros2 launch mpc_control_ex mpc_control_ex.launch.py
+     ```
 ## Download Link
 1. [RoadRunner Map Files](https://1drv.ms/f/c/c0946eca17387fd6/Ekn4u42uQWhFsWUfN6Ae_8MBeV0yV4mr3dVWXNLXa3r6tQ?e=zc3rHF)
 2. [ERP42 model (.dae)](https://1drv.ms/f/c/c0946eca17387fd6/EuThXux5BYZJltwDm1Geoq0BStqVOnv9tUcdESow4elpzg?e=IvXMAu)
