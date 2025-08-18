@@ -57,22 +57,21 @@ This repository is tested on **Ubuntu 20.04 with ROS 2 Foxy**. Before starting t
     cd ~/carla_ws_ros2/src
     sudo ./install.sh
     ```
-2. **Install ROS 2 Package Dependencies**
-  Use `rosdep` to automatically install all ROS 2 dependencies listed in the `package.xml` files.
-    ```sh
-    cd ~/carla_ws_ros2
-    rosdep install -i --from-path src --rosdistro foxy -y
-    ```
 
 ### Build the Packages
-1. Navigate to the workspace root directory and build all packages using the `colcon build` command.
+1. Navigate to the workspace root directory and build all packages
     ```sh
     cd ~/carla_ws_ros2
     colcon build
     ```
 2.  After the build is complete, you must source the setup file in every new terminal to use the packages.
+- bash
     ```sh
     source ~/carla_ws_ros2/install/setup.bash
+    ```
+- zsh
+    ```sh
+    source ~/carla_ws_ros2/install/setup.zsh
     ```
 
 ## Launch Control Examples
@@ -101,7 +100,7 @@ This repository is tested on **Ubuntu 20.04 with ROS 2 Foxy**. Before starting t
      ```
  * Pure Pursuit controller
      ```
-     ros2 launch pure_pursuit_control_ex pure_pursuit_control_ex.launch.py
+     ros2 launch purepursuit_control_ex purepursuit_control_ex.launch.py
      ```
  * Kanayama controller
      ```

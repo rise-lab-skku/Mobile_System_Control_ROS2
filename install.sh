@@ -49,4 +49,4 @@ rm -rf $BUILD_DIR
 
 
 export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-export LC_NUMERIC="en_US.UTF-8”
+export LC_NUMERIC="en_US.UTF-8"
