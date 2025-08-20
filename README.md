@@ -1,6 +1,7 @@
 # Mobile System Control (ROS 2)
 
-This repository is for the ROS 2 version of the **Mobile System Control** lecture. For the ROS 1 version, please refer to [Mobile_System_Control](https://github.com/rise-lab-skku/Mobile_System_Control).
+This repository is for the ROS 2 version of the **Mobile System Control** lecture.  
+For the ROS 1 version, please refer to [Mobile_System_Control](https://github.com/rise-lab-skku/Mobile_System_Control).
 
 ![MPC Controller Simulation Screen](https://github.com/rise-lab-skku/Mobile_System_Control/assets/80592399/8638328b-c6c6-4007-86b4-e025b3875c0c)
 
